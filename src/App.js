@@ -1,23 +1,19 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import Logo from './components/Logo.js';
+import Search from './containers/Search.js';
+import Results from './containers/Results.js';
+import Nominations from './containers/Nominations.js';
 import './App.css';
 
 function App() {
+  const [results, setResults] = useState([]);
+  const [nominations, setNominations] = useState([]);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Logo />
+      <Search results={results} setResults={setResults}/>
+      <Results results={results} setResults={setResults} nominations={nominations} setNominations={setNominations}/>
+      <Nominations nominations={nominations} setNominations={setNominations}/>
     </div>
   );
 }
