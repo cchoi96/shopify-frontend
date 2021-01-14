@@ -1,13 +1,24 @@
 import React from 'react'
+import Movie from '../components/Movie.js';
+import './Nominations.css';
 
 const Nominations = ({ nominations, setNominations }) => {
+
+  const removeNomination = movie => {
+    setNominations(nominations.filter(nomination => nomination.Title !== movie.Title));
+  };
+
   return (
-    <div>
-      <h1>Nominations</h1>
-      {nominations.map(nomination => {
-        console.log(nomination)
+    <div className="nominations">
+      <h2>Nominations</h2>
+      {nominations.map((nomination, index) => {
         return (
-          <h3>{nomination.Title}</h3>
+          <li className="nomination" key={index}>
+           <Movie movie={nomination}/>
+            <div id="nomination-buttons">
+              <button className="nomination-button-remove" onClick={() => removeNomination(nomination)}>Remove</button>
+            </div>
+          </li>
         );
       })}
     </div>

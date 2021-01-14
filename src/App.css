@@ -1,0 +1,12 @@
+li {
+  list-style-type: none;
+}
+
+#movie-display {
+  width: 100%;
+  display: flex;
+}
+
+#movie-display > * {
+  width: 50%;
+}

@@ -1,0 +1,12 @@
+.movie {
+  display: flex;
+}
+
+.movie-poster {
+  height: 200px;
+  width: 130px;
+}
+
+.movie-post > * {
+  width: 50%;
+}
