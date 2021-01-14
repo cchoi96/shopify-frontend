@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import './Banner.css';
 
 const Banner = ({nominations}) => {
   const MAX_NOMINATIONS = 5;

@@ -1,0 +1,14 @@
+#nominations-complete,
+#nominations-incomplete {
+  width: 100%;
+  text-align: center;
+  color: white;
+}
+
+#nominations-complete {
+  background-color: green;
+}
+
+#nominations-incomplete {
+  background-color: blue;
+}

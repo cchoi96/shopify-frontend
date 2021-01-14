@@ -1,12 +1,31 @@
 .movie {
   display: flex;
+  position: relative;
+  text-align: center;
+  width: 75%;
 }
 
 .movie-poster {
-  height: 200px;
-  width: 130px;
+  width: 100%;
+  border-radius: 15px;
+  height: 30%;
 }
 
-.movie-post > * {
-  width: 50%;
+.movie-info {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: #90afc5;
+  color: #ffffff;
+  opacity: 0;
+  border-radius: 15px;
+}
+
+.movie-info:hover {
+  opacity: 0.9;
 }
