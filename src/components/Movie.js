@@ -1,12 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './Movie.css';
 
 const Movie = ({ movie }) => {
-  const [poster, setPoster] = useState(movie.Poster);
-
   return (
     <div className="movie">
-      <img className="movie-poster" src={poster} alt={`${movie.Title} poster`} onError={(e) => setPoster('https://media.comicbook.com/files/img/default-movie.png')}/>
+      <img className="movie-poster" src={movie.Poster} alt={`'${movie.Title}' poster`}/>
       <div className="movie-info">
         <h3>{movie.Title}</h3>
         <p>{movie.Year}</p>
