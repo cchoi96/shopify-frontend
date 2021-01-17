@@ -1,3 +1,10 @@
 .logo {
+  padding: 25px;
+  background-color: #004c3f;
+  color: #ffffff;
   text-align: center;
+}
+
+.logo h1 {
+  margin: 0;
 }

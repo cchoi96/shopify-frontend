@@ -1,30 +1,25 @@
-import React, { useState } from 'react';
+import React from 'react';
 import axios from 'axios';
+import './Search.css';
 
-const Search = ({ results, setResults }) => {
+const Search = ({ setResults }) => {
   const API_KEY = '8a2ec1a4';
-  const [searchQuery, setSearchQuery] = useState('');
 
-  const submit = () => {
-    axios.get(`http://www.omdbapi.com/?t=${searchQuery}&apikey=${API_KEY}`)
+  const submit = query => {
+    axios.get(`http://www.omdbapi.com/?s=${query}&type=movie&apikey=${API_KEY}`)
     .then(result => {
-      const movieData = result.data;
-      const error = movieData.Error;
+      const moviesData = result.data;
+      const error = moviesData.Error;
       if (error) throw new Error(error);
-      console.log(movieData);
-      setResults([...results, movieData]);
+      const searchResults = moviesData.Search;
+      if (searchResults) setResults(moviesData.Search);
     })
     .catch(err => {
 
     });
   }
 
-  return (
-    <div>
-      <input type='text' className='input' value={searchQuery} onInput={e => setSearchQuery(e.target.value)} placeholder='eg. Aliens' />
-      <button type='button' onClick={submit} >Search</button>
-    </div>
-  )
+  return <input type='text' className='input' onInput={e => submit(e.target.value)} placeholder='eg. Aliens' />;
 }
 
 export default Search;

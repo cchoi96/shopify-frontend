@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
+import Banner from './components/Banner.js';
 import Logo from './components/Logo.js';
-import Search from './containers/Search.js';
 import Results from './containers/Results.js';
 import Nominations from './containers/Nominations.js';
 import './App.css';
@@ -11,7 +11,7 @@ function App() {
   return (
     <div className="App">
       <Logo />
-      <Search results={results} setResults={setResults}/>
+      <Banner nominations={nominations} />
       <div id="movie-display">
         <Results results={results} setResults={setResults} nominations={nominations} setNominations={setNominations}/>
         <Nominations nominations={nominations} setNominations={setNominations}/>

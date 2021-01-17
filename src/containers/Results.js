@@ -1,33 +1,25 @@
 import React from 'react'
 import Movie from '../components/Movie.js';
+import Search from './Search.js';
+import constants from '../constants.js';
 import './Results.css';
 
 const Results = ({results, setResults, nominations, setNominations}) => {
 
-  const nominate = movie => {
-    setNominations([...nominations, movie]);
-  };
-
-  const removeResult = movie => {
-    setResults(results.filter(result => result.Title !== movie.Title));
-  };
-
   const isNominated = movie => nominations.some(nomination => nomination.Title === movie.Title);
-  
-  const canNominate = () => nominations.length < 6;
+  const canNominate = () => nominations.length < constants.MAX_NOMINATIONS;
+  const nominate = movie => {
+    if (!isNominated(movie) && canNominate()) setNominations([...nominations, movie]);
+  };
 
   return (
-    <div>
-      <h2>Results</h2>
-      <div className="results">
+    <div className="results">
+      <h2>Results for {<Search setResults={setResults}/>}</h2>
+      <div className="results-list">
         {results.map((movie, index)=> {
           return (
-            <li className="result" key={index}>
+            <li className="result" key={index} onClick={() => nominate(movie)}>
               <Movie movie={movie}/>
-              <div id="result-buttons">
-                <button className="result-buttons-nominate" disabled={isNominated(movie) || !canNominate()} onClick={() => nominate(movie)}>Nominate</button>
-                <button className="result-buttons-remove" onClick={() => removeResult(movie)}>Remove</button>
-              </div>
             </li>
           );
         })}

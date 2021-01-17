@@ -1,5 +1,4 @@
 import React from 'react';
-import Banner from '../components/Banner.js';
 import Movie from '../components/Movie.js';
 import './Nominations.css';
 
@@ -10,17 +9,13 @@ const Nominations = ({ nominations, setNominations }) => {
   };
 
   return (
-    <div>
+    <div className="nominations">
       <h2>Nominations</h2>
-      <Banner nominations={nominations} />
-      <div className="nominations">
+      <div className="nominations-list">
         {nominations.map((nomination, index) => {
           return (
-            <li className="nomination" key={index}>
-            <Movie movie={nomination}/>
-              <div id="nomination-buttons">
-                <button className="nomination-button-remove" onClick={() => removeNomination(nomination)}>Remove</button>
-              </div>
+            <li className="nomination" key={index} onClick={() => removeNomination(nomination)}>
+              <Movie movie={nomination}/>
             </li>
           );
         })}

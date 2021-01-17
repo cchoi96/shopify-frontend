@@ -1,14 +1,18 @@
-li {
-  list-style-type: none;
-}
-
 #movie-display {
   width: 100%;
   display: flex;
 }
 
 #movie-display > * {
-  width: 50%;
+  text-align: center;
+  background-color: #ffffff;
+  color: #212326;
+  width: 45%;
+  height: 70vh;
+  overflow: scroll;
+  border-radius: 2px;
+  box-shadow: 2px 2px 25px 3px #ccc;
+  margin: 15px auto;
 }
 
 @media screen and (max-width: 768px) {
@@ -17,7 +21,7 @@ li {
   }
 
   #movie-display > * {
-    width: 100%;
-    min-height: 30vh;
+    width: 80%;
+    margin-bottom: 30px;
   }
 }
