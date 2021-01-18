@@ -7,60 +7,64 @@ import './Results.css';
 
 const Results = ({results, setResults, nominations, setNominations, nominationListID, error, setError}) => {
   const SERVER_URL = constants.SERVER_URL;
+  const HEADERS = constants.HEADERS;
   const isNominated = movie => nominations.some(nomination => nomination.imdbID === movie.imdbID);
   const canNominate = () => nominations.length < constants.MAX_NOMINATIONS;
-  const getMovie = async imdbID => {
-    const movie = await axios.get(`${SERVER_URL}/movie`, {
-      params: { imdbID }
-    });
-    return movie?.data;
-  };
+  // const getMovie = async imdbID => {
+  //   const movie = await axios.get(`${SERVER_URL}/movie`, {
+  //     headers: HEADERS,
+  //     params: { imdbID }
+  //   });
+  //   return movie?.data;
+  // };
 
-  const addMovie = async movie => {
-    axios.post(`${SERVER_URL}/movie`, {
-      data: { movie }
-    });
-  };
+  // const addMovie = async movie => {
+  //   axios.post(`${SERVER_URL}/movie`, {
+  //     data: { movie }
+  //   });
+  // };
 
   const nominateMovie = async movie => {
     setNominations([...nominations, movie]);
-    axios.post(`${SERVER_URL}/nomination/movie`, {
-      data: {
-        imdbID: movie.imdbID,
-        listID: nominationListID
-      }
-    });
+    // axios.post(`${SERVER_URL}/nomination/movie`, {
+    //   headers: HEADERS,
+    //   data: {
+    //     imdbID: movie.imdbID,
+    //     listID: nominationListID
+    //   }
+    // });
   };
 
   const nominate = async movie => {
     if (!isNominated(movie) && canNominate()) {
-      getMovie(movie.imdbID)
-      .then(result => {
-        if (result.length) return;
-        return addMovie(movie);
-      })
-      .then(() => {
-        nominateMovie(movie);
-      });
+      // getMovie(movie.imdbID)
+      // .then(result => {
+      //   if (result.length) return;
+      //   return addMovie(movie);
+      // })
+      // .then(() => {
+        
+      // });
+      nominateMovie(movie);
     }
   };
 
   const showError = (error) ? <p>{error} Please try another search query.</p> : null;
 
   return (
-    <div className="results">
-      <h2>Results for {<Search setResults={setResults} error={error} setError={setError}/>}</h2>
-      {showError}
-      <div className="results-list">
-        {results.map((movie, index)=> {
-          return (
-            <li className="result" key={index} onClick={() => nominate(movie)}>
-              <Movie movie={movie}/>
-            </li>
-          );
-        })}
+      <div className="results">
+        <h2>Results for {<Search setResults={setResults} error={error} setError={setError}/>}</h2>
+        {showError}
+        <div className="results-list">
+          {results.map((movie, index)=> {
+            return (
+              <li className="result" key={index} onClick={() => nominate(movie)}>
+                <Movie movie={movie}/>
+              </li>
+            );
+          })}
+        </div>
       </div>
-    </div>
   )
 };
 

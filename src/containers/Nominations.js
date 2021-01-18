@@ -8,12 +8,16 @@ const Nominations = ({ nominations, setNominations, nominationListID }) => {
   const SERVER_URL = constants.SERVER_URL;
   const removeNomination = async movie => {
     setNominations(nominations.filter(nomination => nomination.imdbID !== movie.imdbID));
-    await axios.delete(`${SERVER_URL}/nomination/movie`, {
-      data: {
-        imdbID: movie.imdbID,
-        listID: nominationListID
-      }
-    });
+    // await axios.delete(`${SERVER_URL}/nomination/movie`, {
+    //   imdbID: movie.imdbID,
+    //   listID: nominationListID
+    // },
+    // {
+    //   headers: {
+    //     'Content-Type': 'application/json;charset=UTF-8',
+    //     "Access-Control-Allow-Origin": "*",
+    //   }
+    // });
   };
 
   return (
