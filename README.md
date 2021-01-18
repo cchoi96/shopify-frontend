@@ -13,5 +13,5 @@ To run it locally, clone the repo, install the dependencies, then run 'npm start
 
 ## Wanted to do
 
-1. I had an entire server up and running with a DB but unfortunately ran into CORS issues. The consequent server integration in this repository is commented out.
+1. I had an entire server up and running with a DB but unfortunately ran into CORS issues. The consequent server integration in this repository is commented out. Server code can be found here: https://github.com/cchoi96/shopify-backend
 2. Testing.
