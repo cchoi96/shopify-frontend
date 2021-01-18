@@ -11,7 +11,8 @@ function App() {
   const SERVER_URL = constants.SERVER_URL;
   const [results, setResults] = useState([]);
   const [nominations, setNominations] = useState([]);
-  const [nominationListID, setNominationListID] = useState('')
+  const [nominationListID, setNominationListID] = useState('');
+  const [error, setError] = useState('');
 
   useEffect(() => {
     const createNominationList = () => {
@@ -60,7 +61,7 @@ function App() {
       <Logo />
       <Banner nominations={nominations} nominationListID={nominationListID}/>
       <div id="movie-display">
-        <Results results={results} setResults={setResults} nominations={nominations} setNominations={setNominations} nominationListID={nominationListID}/>
+        <Results results={results} setResults={setResults} nominations={nominations} setNominations={setNominations} nominationListID={nominationListID} error={error} setError={setError}/>
         <Nominations nominations={nominations} setNominations={setNominations} nominationListID={nominationListID}/>
       </div>
     </div>

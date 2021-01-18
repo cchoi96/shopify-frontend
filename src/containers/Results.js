@@ -5,7 +5,7 @@ import constants from '../constants.js';
 import axios from 'axios';
 import './Results.css';
 
-const Results = ({results, setResults, nominations, setNominations, nominationListID}) => {
+const Results = ({results, setResults, nominations, setNominations, nominationListID, error, setError}) => {
   const SERVER_URL = constants.SERVER_URL;
   const isNominated = movie => nominations.some(nomination => nomination.imdbID === movie.imdbID);
   const canNominate = () => nominations.length < constants.MAX_NOMINATIONS;
@@ -45,9 +45,12 @@ const Results = ({results, setResults, nominations, setNominations, nominationLi
     }
   };
 
+  const showError = (error) ? <p>{error} Please try another search query.</p> : null;
+
   return (
     <div className="results">
-      <h2>Results for {<Search setResults={setResults}/>}</h2>
+      <h2>Results for {<Search setResults={setResults} error={error} setError={setError}/>}</h2>
+      {showError}
       <div className="results-list">
         {results.map((movie, index)=> {
           return (
