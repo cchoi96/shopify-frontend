@@ -9,7 +9,7 @@ const Banner = ({ nominations, nominationListID }) => {
   return ((nominationsLength >= constants.MAX_NOMINATIONS) ?
     <div id="nominations-complete">
       <p>Thank you for your nominations!</p>
-      <p>Your shareable link is: <a>{nominationListID}</a></p>
+      <p>Your shareable link is: <a href={`https://chris-shopify-frontend.herokuapp.com/${nominationListID}`} rel="noreferrer">{`https://chris-shopify-frontend.herokuapp.com/${nominationListID}`}</a></p>
     </div> :
     <div id="nominations-incomplete">
       <p>Please nominate {constants.MAX_NOMINATIONS} movies for the 2021 Shoppies Awards. Click on any search result to nominate it, or on any nomination to remove it.</p>
